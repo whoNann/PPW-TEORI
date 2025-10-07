@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tugas B - Halaman Administrator</title>
+  <style>
+    :root{--bar-h:56px;--gap:10px;--brand:#112d5a;}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif}
+    header,footer{
+      position:fixed;left:0;right:0;height:var(--bar-h);
+      background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;z-index:100
+    }
+    header{top:0}
+    footer{bottom:0}
+
+    .page{
+      padding-top:calc(var(--bar-h) + var(--gap));
+      padding-bottom:calc(var(--bar-h) + var(--gap));
+      min-height:100vh;display:grid;grid-template-rows:1fr
+    }
+
+    .admin-grid{
+      height:100%;
+      display:grid;grid-template-columns:240px 1fr;gap:0
+    }
+
+    .sidebar{
+      padding:16px;border-right:1px solid #c9c9c9;background:#f2f4f7
+    }
+    .sidebar a{
+      display:block;text-decoration:none;color:#000;font-weight:bold;padding:10px 6px;border-radius:6px
+    }
+    .sidebar a + a{margin-top:8px}
+
+    .content{
+      padding:16px;background:#fff;display:flex;align-items:center;justify-content:center
+    }
+    .title{margin:0;font-weight:bold;font-size:20px;text-align:center}
+  </style>
+</head>
+<body>
+  <header>Header</header>
+
+  <div class="page">
+    <section class="admin-grid">
+      <nav class="sidebar">
+        <a href="#">Data User</a>
+        <a href="#">Kelola Produk</a>
+        <a href="#">Edit Password</a>
+        <a href="#">Logout</a>
+      </nav>
+      <div class="content">
+        <h2 class="title">Konten Dinamis</h2>
+      </div>
+    </section>
+  </div>
+
+  <footer>Footer</footer>
+</body>
+</html>

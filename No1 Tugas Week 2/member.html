@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Member - FISHIT STORE</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f6fc;
+        color: #222;
+      }
+      header {
+        background-color: #0a2558;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 1.8em;
+        font-weight: bold;
+      }
+      nav {
+        background-color: #294b8a;
+        text-align: center;
+        padding: 10px 0;
+      }
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: 600;
+        padding: 8px 14px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+      nav a:hover {
+        background-color: #fcbf49;
+        color: #0a2558;
+      }
+      .layout {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        max-width: 1100px;
+        margin: 30px auto;
+        padding: 0 16px;
+      }
+      #l-side, #r-side {
+        width: 20%;
+        min-height: 400px;
+        background-color: #e8ebf3;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 20px;
+        font-weight: bold;
+        color: #0a2558;
+      }
+      #content {
+        width: 60%;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      }
+      h3 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #0a2558;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+      }
+      th {
+        background-color: #294b8a;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background-color: #f4f6fc;
+      }
+      footer {
+        background-color: #0a2558;
+        color: white;
+        text-align: center;
+        padding: 16px 0;
+        margin-top: 40px;
+        font-weight: 600;
+      }
+      @media (max-width: 900px) {
+        .layout {
+          flex-direction: column;
+        }
+        #l-side, #r-side, #content {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>HEADER</header>
+    <nav>
+      <a href="index.html">Beranda</a>
+      <a href="produk.html">Produk</a>
+      <a href="member.html">Member</a>
+      <a href="registrasi.html">Registrasi</a>
+    </nav>
+
+    <div class="layout">
+      <aside id="l-side">
+        <p>Populer</p>
+        <small>Konten terpopuler</small>
+      </aside>
+
+      <main id="content">
+        <h3>DAFTAR MEMBER</h3>
+        <table>
+          <tr>
+            <th>No</th>
+            <th>Nama Member</th>
+            <th>Email</th>
+            <th>Tanggal Bergabung</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Albaqi Ananta</td>
+            <td>ananta@example.com</td>
+            <td>10 Januari 2024</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Aura Delillah</td>
+            <td>aura@example.com</td>
+            <td>15 Februari 2024</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Sandika Galuh</td>
+            <td>sandika@example.com</td>
+            <td>3 Maret 2024</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Nata Resik</td>
+            <td>nataresik@example.com</td>
+            <td>21 April 2024</td>
+          </tr>
+        </table>
+      </main>
+
+      <aside id="r-side">
+        <p>Iklan</p>
+        <small>Promo dan penawaran</small>
+      </aside>
+    </div>
+
+    <footer>FOOTER</footer>
+  </body>
+</html>

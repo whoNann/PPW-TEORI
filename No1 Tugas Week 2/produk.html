@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produk - FISHIT STORE</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f6fc;
+        color: #222;
+      }
+      header {
+        background-color: #0a2558;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 1.8em;
+        font-weight: bold;
+      }
+      nav {
+        background-color: #294b8a;
+        text-align: center;
+        padding: 10px 0;
+      }
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: 600;
+        padding: 8px 14px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+      nav a:hover {
+        background-color: #fcbf49;
+        color: #0a2558;
+      }
+      .layout {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        max-width: 1100px;
+        margin: 30px auto;
+        padding: 0 16px;
+      }
+      #l-side,
+      #r-side {
+        width: 20%;
+        min-height: 400px;
+        background-color: #e8ebf3;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        color: #0a2558;
+        font-weight: bold;
+      }
+      #content {
+        width: 60%;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      }
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #0a2558;
+      }
+      .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 20px;
+      }
+      .card {
+        background-color: #fff;
+        border: 1px solid #dfe4f2;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+      }
+      .card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        display: block;
+      }
+      .card-body {
+        padding: 14px;
+      }
+      .title {
+        font-weight: 700;
+        color: #0a2558;
+        margin-bottom: 8px;
+      }
+      .price {
+        color: #e53935;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .btn-row {
+        display: flex;
+        gap: 10px;
+      }
+      .btn {
+        flex: 1;
+        padding: 8px;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+      .btn-beli {
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        color: white;
+      }
+      .btn-beli:hover {
+        opacity: 0.9;
+      }
+      .btn-keranjang {
+        background-color: #fcbf49;
+        color: #0a2558;
+      }
+      .btn-keranjang:hover {
+        background-color: #f9aa25;
+      }
+      footer {
+        background-color: #0a2558;
+        color: white;
+        text-align: center;
+        padding: 16px 0;
+        margin-top: 40px;
+        font-weight: 600;
+      }
+      @media (max-width: 900px) {
+        .layout {
+          flex-direction: column;
+        }
+        #l-side,
+        #r-side,
+        #content {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>HEADER</header>
+    <nav>
+      <a href="index.html">Beranda</a>
+      <a href="produk.html">Produk</a>
+      <a href="member.html">Member</a>
+      <a href="registrasi.html">Registrasi</a>
+    </nav>
+
+    <div class="layout">
+      <aside id="l-side">
+        <p>Populer</p>
+        <small>Produk terlaris minggu ini</small>
+        <ul style="list-style: none; margin-top: 10px; text-align: left; font-weight: normal; color: #333;">
+          <li>• Dino KOHANA</li>
+          <li>• ORCA</li>
+          <li>• Paus Mutasi GOLD</li>
+        </ul>
+      </aside>
+
+      <main id="content">
+        <h2>Daftar Produk</h2>
+        <div class="products">
+          <div class="card">
+            <img src="asset/hehe1.png" alt="Produk 1" />
+            <div class="card-body">
+              <div class="title">Dino KOHANA</div>
+              <div class="price">Rp 55.000</div>
+              <div class="btn-row">
+                <button class="btn btn-beli">Beli</button>
+                <button class="btn btn-keranjang">Keranjang</button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="asset/hehe2.png" alt="Produk 2" />
+            <div class="card-body">
+              <div class="title">ORCA</div>
+              <div class="price">Rp 20.000</div>
+              <div class="btn-row">
+                <button class="btn btn-beli">Beli</button>
+                <button class="btn btn-keranjang">Keranjang</button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="asset/hehe3.png" alt="Produk 3" />
+            <div class="card-body">
+              <div class="title">Plasma Mutasi GEMSTONE BIRU</div>
+              <div class="price">Rp 28.000</div>
+              <div class="btn-row">
+                <button class="btn btn-beli">Beli</button>
+                <button class="btn btn-keranjang">Keranjang</button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="asset/hehe4.png" alt="Produk 4" />
+            <div class="card-body">
+              <div class="title">Paus Mutasi GOLD</div>
+              <div class="price">Rp 35.000</div>
+              <div class="btn-row">
+                <button class="btn btn-beli">Beli</button>
+                <button class="btn btn-keranjang">Keranjang</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <aside id="r-side">
+        <p>Iklan</p>
+        <small>Promo dan penawaran spesial</small>
+        <div style="margin-top: 14px; background: #fff; padding: 12px; border-radius: 8px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+          <strong style="color:#0a2558;">Diskon 20%</strong>
+          <p style="font-size: 14px; margin-top: 6px;">Untuk pembelian pertama</p>
+          <a href="registrasi.html" style="display: inline-block; margin-top: 8px; background-color: #294b8a; color: #fff; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-weight: 600;">Daftar Sekarang</a>
+        </div>
+      </aside>
+    </div>
+
+    <footer>FOOTER</footer>
+  </body>
+</html>
+```

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrasi - FISHIT STORE</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f6fc;
+        color: #222;
+      }
+      header {
+        background-color: #0a2558;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 1.8em;
+        font-weight: bold;
+      }
+      nav {
+        background-color: #294b8a;
+        text-align: center;
+        padding: 10px 0;
+      }
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: 600;
+        padding: 8px 14px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+      nav a:hover {
+        background-color: #fcbf49;
+        color: #0a2558;
+      }
+      .layout {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        max-width: 1100px;
+        margin: 30px auto;
+        padding: 0 16px;
+      }
+      #l-side, #r-side {
+        width: 20%;
+        min-height: 400px;
+        background-color: #e8ebf3;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 20px;
+        font-weight: bold;
+        color: #0a2558;
+      }
+      #content {
+        width: 60%;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      }
+      h3 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #0a2558;
+      }
+      table {
+        width: 100%;
+      }
+      table td {
+        padding: 8px;
+        vertical-align: top;
+      }
+      input[type="text"],
+      input[type="date"],
+      textarea,
+      select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: Arial, sans-serif;
+      }
+      textarea {
+        height: 60px;
+        resize: vertical;
+      }
+      input[type="radio"], input[type="checkbox"] {
+        margin-right: 5px;
+      }
+      input[type="submit"], input[type="reset"] {
+        padding: 10px 20px;
+        margin: 10px 5px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      input[type="submit"] {
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        color: white;
+      }
+      input[type="reset"] {
+        background: #f0f0f0;
+        color: #333;
+      }
+      footer {
+        background-color: #0a2558;
+        color: white;
+        text-align: center;
+        padding: 16px 0;
+        margin-top: 40px;
+        font-weight: 600;
+      }
+      @media (max-width: 900px) {
+        .layout {
+          flex-direction: column;
+        }
+        #l-side, #r-side, #content {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>HEADER</header>
+    <nav>
+      <a href="index.html">Beranda</a>
+      <a href="produk.html">Produk</a>
+      <a href="member.html">Member</a>
+      <a href="registrasi.html">Registrasi</a>
+    </nav>
+
+    <div class="layout">
+      <aside id="l-side">
+        <p>Populer</p>
+        <small>Konten terpopuler</small>
+      </aside>
+
+      <main id="content">
+        <h3>FORM REGISTRASI</h3>
+        <form>
+          <table>
+            <tr>
+              <td>Nama Lengkap</td>
+              <td>:</td>
+              <td><input type="text" name="nama_lengkap" /></td>
+            </tr>
+            <tr>
+              <td>Tanggal Lahir</td>
+              <td>:</td>
+              <td><input type="date" name="tanggal_lahir" /></td>
+            </tr>
+            <tr>
+              <td>Jenis Kelamin</td>
+              <td>:</td>
+              <td>
+                <input type="radio" name="jenis_kelamin" value="Laki-laki" /> Laki-laki
+                <input type="radio" name="jenis_kelamin" value="Perempuan" /> Perempuan
+              </td>
+            </tr>
+            <tr>
+              <td>Alamat</td>
+              <td>:</td>
+              <td><textarea name="alamat"></textarea></td>
+            </tr>
+            <tr>
+              <td>Agama</td>
+              <td>:</td>
+              <td>
+                <select name="agama">
+                  <option value="islam">Islam</option>
+                  <option value="kristen">Kristen</option>
+                  <option value="hindu">Hindu</option>
+                  <option value="budha">Budha</option>
+                  <option value="konghucu">Konghucu</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Hobi</td>
+              <td>:</td>
+              <td>
+                <input type="checkbox" name="hobi" value="membaca" /> Membaca
+                <input type="checkbox" name="hobi" value="menulis" /> Menulis
+                <input type="checkbox" name="hobi" value="bermain" /> Bermain
+                <input type="checkbox" name="hobi" value="berenang" /> Berenang
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" style="text-align: center;">
+                <input type="submit" value="Submit" />
+                <input type="reset" value="Reset" />
+              </td>
+            </tr>
+          </table>
+        </form>
+      </main>
+
+      <aside id="r-side">
+        <p>Iklan</p>
+        <small>Promo dan penawaran</small>
+      </aside>
+    </div>
+
+    <footer>FOOTER</footer>
+  </body>
+</html>
