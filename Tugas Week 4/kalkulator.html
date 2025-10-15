@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kalkulator</title>
+  <style>
+    :root{
+      /* Palet mengikuti layout sebelumnya */
+      --navy:#294b8a;
+      --light:#e6eef2;
+      --card:#ffffff;
+      --muted:#9a9a9a;
+      --btn-hover:#a9d1f9;
+      --equal:#7bdc00; /* hijau untuk tombol "=" */
+      --shadow:0 10px 25px rgba(0,0,0,.15);
+      font-family:"Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      min-height:100vh;
+      background:var(--light);
+      display:grid;
+      place-items:center;
+      color:#333;
+    }
+
+    /* Kartu kalkulator */
+    .calc{
+      width:min(92vw,360px);
+      background:linear-gradient(180deg,#2e548f 0%, var(--navy) 40%, #203a6b 100%);
+      border-radius:16px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .inner{
+      background:#2a2f36;
+      border-radius:12px;
+      padding:14px;
+    }
+
+    /* Layar */
+    .display{
+      width:100%;
+      height:64px;
+      border-radius:10px;
+      background:#121418;
+      color:#f3f7ff;
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      padding:0 14px;
+      font-size:28px;
+      letter-spacing:.5px;
+      overflow:hidden;
+      box-shadow:inset 0 0 0 2px rgba(255,255,255,0.04);
+      user-select:none;
+    }
+    .sub{
+      font-size:12px;
+      color:var(--muted);
+      text-align:right;
+      padding:6px 2px 10px;
+      min-height:18px;
+      user-select:none;
+    }
+
+    /* Grid tombol */
+    .keys{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:10px;
+    }
+    button{
+      border:0;
+      border-radius:10px;
+      padding:14px 0;
+      font-size:20px;
+      font-weight:700;
+      cursor:pointer;
+      color:#fff;
+      background:#3b424c;
+      transition:transform .06s ease, filter .2s ease, background .2s ease;
+      box-shadow:0 4px 10px rgba(0,0,0,.2);
+      outline:none;
+    }
+    button:hover{ filter:brightness(1.08) }
+    button:active{ transform:translateY(1px) }
+
+    /* Variasi */
+    .op{ background:#2e7bd4 }              /* operator */
+    .op:hover{ background:#3890fb }
+    .clear{ background:#ef5350 }           /* C */
+    .clear:hover{ background:#ff6b68 }
+    .equal{ background:var(--equal); color:#0b2a00 } /* = */
+    .span-2{ grid-column:span 2; }         /* tombol lebar */
+
+    /* Footer kecil */
+    .note{
+      text-align:center;
+      color:#c9d4ff;
+      font-size:11px;
+      margin-top:10px;
+      opacity:.9;
+      user-select:none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calc">
+    <div class="inner">
+      <div id="display" class="display">0</div>
+      <div id="sub" class="sub"></div>
+
+      <div class="keys">
+        <!-- baris 1 -->
+        <button class="clear span-2" data-key="C">C</button>
+        <button class="op" data-key="⌫">⌫</button>
+        <button class="op" data-key="÷">÷</button>
+
+        <!-- baris 2 -->
+        <button data-key="7">7</button>
+        <button data-key="8">8</button>
+        <button data-key="9">9</button>
+        <button class="op" data-key="×">×</button>
+
+        <!-- baris 3 -->
+        <button data-key="4">4</button>
+        <button data-key="5">5</button>
+        <button data-key="6">6</button>
+        <button class="op" data-key="-">-</button>
+
+        <!-- baris 4 -->
+        <button data-key="1">1</button>
+        <button data-key="2">2</button>
+        <button data-key="3">3</button>
+        <button class="op" data-key="+">+</button>
+
+        <!-- baris 5 -->
+        <button class="span-2" data-key="0">0</button>
+        <button data-key=".">.</button>
+        <button class="equal" data-key="=">=</button>
+      </div>
+    </div>
+    <div class="note">Klik tombol atau gunakan keyboard (0–9, + - * / . Enter, Backspace).</div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display');
+    const sub = document.getElementById('sub');
+    let expr = '0';
+    let justEvaluated = false;
+
+    const setDisplay = (text) => { display.textContent = text; };
+    const setSub = (text='') => { sub.textContent = text; };
+
+    function input(key){
+      if (key === 'C'){
+        expr = '0';
+        setDisplay(expr);
+        setSub('');
+        return;
+      }
+      if (key === '⌫'){
+        if (justEvaluated){ expr='0'; justEvaluated=false; }
+        expr = (expr.length>1) ? expr.slice(0,-1) : '0';
+        setDisplay(expr);
+        return;
+      }
+      if (key === '='){
+        try{
+          const normalized = expr
+            .replace(/×/g,'*')
+            .replace(/÷/g,'/')
+            .replace(/[^0-9+\-*/.() ]/g,''); // sanitasi sederhana
+          const result = Function(`"use strict";return (${normalized})`)();
+          setSub(expr + ' =');
+          expr = String(result);
+          setDisplay(expr);
+          justEvaluated = true;
+        }catch(e){
+          setDisplay('Error');
+          justEvaluated = true;
+        }
+        return;
+      }
+
+      // angka / titik / operator
+      if (justEvaluated && /[0-9.]/.test(key)){ // mulai ekspresi baru
+        expr = '0';
+        justEvaluated = false;
+      }else if (justEvaluated){
+        justEvaluated = false;
+      }
+
+      // aturan input
+      if (expr === '0' && /[0-9]/.test(key)) expr = key;
+      else expr += key;
+
+      // hindari operator ganda
+      expr = expr
+        .replace(/([+\-×÷*/.])\1+/g,'$1')
+        .replace(/([+\-×÷*/])\./g,'$10.');
+
+      setDisplay(expr);
+    }
+
+    // Klik tombol
+    document.querySelectorAll('button[data-key]').forEach(btn=>{
+      btn.addEventListener('click', ()=>input(btn.dataset.key));
+    });
+
+    // Keyboard
+    const keyMap = {
+      '/':'÷', '*':'×', 'Enter':'=', '=':'=', 'Backspace':'⌫'
+    };
+    window.addEventListener('keydown', (e)=>{
+      let k = e.key;
+      if (keyMap[k]) k = keyMap[k];
+      if (/^[0-9.+\-×÷]$/.test(k) || ['=','⌫','Enter'].includes(k)){
+        e.preventDefault();
+        input(k);
+      }
+    });
+  </script>
+</body>
+</html>
